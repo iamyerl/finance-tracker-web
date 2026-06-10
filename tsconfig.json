@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "react-native": ["src/shims/react-native"],
+      "react-native-svg": ["src/shims/react-native-svg"],
+      "react-native-gesture-handler": ["src/shims/gesture-handler"],
+      "react-native-safe-area-context": ["src/shims/safe-area-context"],
+      "@react-native-async-storage/async-storage": ["src/shims/async-storage"],
+      "@react-navigation/native": ["src/shims/navigation-native"],
+      "@react-navigation/bottom-tabs": ["src/shims/navigation-bottom-tabs"],
+      "expo-linear-gradient": ["src/shims/expo-linear-gradient"],
+      "expo-status-bar": ["src/shims/expo-status-bar"],
+      "@expo/vector-icons": ["src/shims/vector-icons"]
+    }
+  },
+  "include": ["src", "App.tsx"]
+}

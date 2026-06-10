@@ -1,0 +1,77 @@
+/* Базовая среда, эквивалентная корню React Native приложения */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #04060f;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ScrollView со скрытым скроллбаром (showsVerticalScrollIndicator={false}) */
+.rn-noscrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.rn-noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* placeholderTextColor для TextInput */
+.rn-textinput::placeholder {
+  color: var(--rn-placeholder, rgba(128, 128, 128, 0.7));
+}
+.rn-textinput:focus {
+  outline: none;
+}
+
+/* pointerEvents="box-none": сам элемент прозрачен для кликов, дети — нет */
+.rn-pointer-box-none {
+  pointer-events: none !important;
+}
+.rn-pointer-box-none > * {
+  pointer-events: auto;
+}
+
+/* Modal animationType="slide" / "fade" */
+@keyframes rn-modal-slide {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes rn-modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.rn-modal-slide {
+  animation: rn-modal-slide 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.rn-modal-fade {
+  animation: rn-modal-fade 0.18s ease-out;
+}
