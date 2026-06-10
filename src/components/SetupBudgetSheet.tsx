@@ -29,6 +29,9 @@ export function SetupBudgetSheet({ visible, onClose }: Props) {
   const [editorOpen, setEditorOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
 
+  // Инициализируем черновик только в момент открытия шторки: если зависеть от
+  // budget/envelopes, то правка/удаление конверта из вложенного редактора
+  // перезатрёт уже введённые, но ещё не сохранённые значения.
   useEffect(() => {
     if (visible) {
       setIncome(budget?.income ? String(budget.income) : '');
@@ -39,7 +42,8 @@ export function SetupBudgetSheet({ visible, onClose }: Props) {
       }
       setPlans(initial);
     }
-  }, [visible, budget, envelopes]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible]);
 
   const incomeN = Number(income || 0);
   const totalPlanned = envelopes.reduce((s, e) => s + Number(plans[e.id] || 0), 0);
@@ -212,7 +216,7 @@ export function SetupBudgetSheet({ visible, onClose }: Props) {
                       fontSize: 15,
                       fontWeight: '600',
                       textAlign: 'right',
-                      minWidth: 50,
+                      flex: 1,
                       padding: 0,
                     }}
                   />
